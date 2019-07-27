@@ -1,7 +1,28 @@
 body{
   padding-top:80px;
   word-wrap:break-word;
+  color: white;
 }
 img{
   height: 200px;
+}
+.jumbotron{
+  background-size: cover;
+  background-image: url(/img/earth.jpg);
+}
+.container{
+  background-position: center;
+  background-size: cover;
+  background-image: url(/img/earth.jpg);
+}
+.well{
+  background-color: rgba(255, 255, 255, 0);
+}
+ul{
+  list-style: none;
+  font-size: 18px;
+}
+.fa-trash{
+  height: 16.72px;
+  width: 18px;
 }

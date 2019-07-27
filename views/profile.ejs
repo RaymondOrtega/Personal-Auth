@@ -1,68 +1,97 @@
 <!doctype html>
 <html>
+
 <head>
-    <title>21 Savage Fan Site</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+  <title>21 Savage Fan Site</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
+  <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      <h1><span></span> Profile Page</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
     <div class="row">
 
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
+      <!-- LOCAL INFORMATION -->
+      <div class="col-sm-6">
+        <div class="well">
+          <h3><span class="fa fa-user"></span> Local</h3>
 
-                <% if (user.local.email) { %>
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
+          <% if (user.local.email) { %>
+          <p>
+            <strong>id</strong>: <%= user._id %><br>
+            <strong>email</strong>: <%= user.local.email %><br>
+            <strong>password</strong>: <%= user.local.password %>
+          </p>
 
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                <% } else { %>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
-                <% } %>
-
-            </div>
-        </div>
-        <div class="col-sm-6">
-          <h3>Messages</h3>
-          <ul class="messages">
-          <% for(var i=0; i<messages.length; i++) {%>
-            <li class="message">
-              <span><%= messages[i].name %></span>
-              <span><%= messages[i].msg %></span>
-              <span><%= messages[i].thumbUp %></span>
-              <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span>
-              <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
-              <span><i class="fa fa-trash" aria-hidden="true"></i></span>
-            </li>
+          <a href="/unlink/local" class="btn btn-default">Unlink</a>
+          <% } else { %>
+          <a href="/connect/local" class="btn btn-default">Connect Local</a>
           <% } %>
-          </ul>
 
-          <h2>Add a message</h2>
-        <% if (user.local.email) { %>
-          <form action="/messages" method="POST">
-            <input type="text" value="<%= user.local.email %>" name="name">
-            <input type="text" placeholder="message" name="msg">
-            <button type="submit">Submit</button>
-          </form>
         </div>
-        <% } %>
+      </div>
+      <div class="col-sm-6">
+        <h3>Enter A Planet</h3>
+        <ul class="messages">
+          <% for(var i=0; i<messages.length; i++) {%>
+          <li class="message">
+            <span><%= messages[i].name %></span>
+            <span><%= messages[i].msg %></span>
+            <%if (messages[i].msg == "neptune") { %>
+            <p>Neptune has an average surface temperature of -214°C – approximately -353°F.</p>
+            <% } %>
+            <%if (messages[i].msg == "pluto") { %>
+            <p>No longer a planet, but still loved by other planets. :(</p>
+            <% } %>
+            <%if (messages[i].msg == "mars") { %>
+            <p>Mars experiences huge dust storms – the largest in our solar system. This is due to the elliptical shape of the planet’s orbit path around the Sun. The orbit path is more elongated than many of the other planets and this oval shaped orbit results in fierce dust storms that cover the entire planet and can last for many months.</p>
+            <% } %>
+            <%if (messages[i].msg == "earth") { %>
+            <p>The rotation of the Earth is gradually slowing down. The deceleration of the Earth’s rotation is very slow, approximately 17 milliseconds per hundred years. Eventually this will lengthen our days but it will take around 140 million years before our day will have increased from 24 to 25 hours.</p>
+            <% } %>
+            <%if (messages[i].msg == "jupiter") { %>
+            <p>Jupiter’s Great Red Spot is an enormous storm that has been raging for over 300 years. This storm is so wide that three Earth’s would fit inside of it.</p>
+            <% } %>
+            <%if (messages[i].msg == "saturn") { %>
+            <p>Saturn has the fastest winds of any other planet in our solar system. These winds have been measured at approximately 1,800 km per hour (1,100 miles per hour).</p>
+            <% } %>
+            <%if (messages[i].msg == "uranus") { %>
+            <p>The mass of Uranus is about 14.5 times the mass of Earth, making it the lightest of the four gas giants of the outer solar system.</p>
+            <% } %>
+            <%if (messages[i].msg == "venus") { %>
+            <p>Venus is the hottest planet in the solar system with an average surface temperature of 462°C (863°F).Billions of years ago, the climate of Venus may been similar to that of Earth and scientists believe that Venus once possessed large amounts of water or oceans.</p>
+            <% } %>
+            <%if (messages[i].msg == "mercury") { %>
+            <p>It was once believed that a planet called Vulcan existed between the orbit of Mercury and the Sun </p>
+            <% } %>
 
-</div>
+            <button type="button" name="button" class="info" style="background-color:<%= messages[i].color %>">WOW!</button>
+            <span> <button type="button" name="button" class="deleteB">Delete</button> </span>
+          </li>
+          <% } %>
+        </ul>
 
-<script src="main.js"></script>
+        <h2>Add a message</h2>
+        <% if (user.local.email) { %>
+        <form action="/messages" method="POST">
+          <input type="text" value="<%= user.local.email %>" name="name">
+          <input type="text" placeholder="planet(lowercase)" name="msg" class="lower">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+      <% } %>
+
+    </div>
+
+    <script src="main.js"></script>
 
 </body>
+
 </html>

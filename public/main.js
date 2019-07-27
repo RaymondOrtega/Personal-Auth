@@ -1,34 +1,31 @@
-var thumbUp = document.getElementsByClassName("fa-thumbs-up");
-var trash = document.getElementsByClassName("fa-trash");
-
-Array.from(thumbUp).forEach(function(element) {
+var deleteB = document.getElementsByClassName("deleteB");
+var colorButton = document.getElementsByClassName("info");
+Array.from(colorButton).forEach(function(element) {
       element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-        fetch('messages', {
+      console.log("You Clicked Button Color Change")
+        const name = this.parentNode.childNodes[1].innerText
+        const message = this.parentNode.childNodes[3].innerText
+        const buttonCo = this.parentNode.childNodes[7].innerText
+        console.log(buttonCo,message,name);
+        fetch('buttonColor', {
           method: 'put',
-          headers: {'Content-Type': 'application/json'},
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify({
             'name': name,
-            'msg': msg,
-            'thumbUp':thumbUp
+            'msg': message,
           })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          console.log(data)
-          window.location.reload(true)
+        }).then(function (response) {
+          window.location.reload()
         })
       });
 });
 
-Array.from(trash).forEach(function(element) {
+Array.from(deleteB).forEach(function(element) {
       element.addEventListener('click', function(){
         const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
+        const message = this.parentNode.parentNode.childNodes[3].innerText
         fetch('messages', {
           method: 'delete',
           headers: {
@@ -36,7 +33,7 @@ Array.from(trash).forEach(function(element) {
           },
           body: JSON.stringify({
             'name': name,
-            'msg': msg
+            'msg': message
           })
         }).then(function (response) {
           window.location.reload()
