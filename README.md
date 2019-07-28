@@ -1,7 +1,7 @@
-# Bootcamp2019a Project: Complete the thumbs down feature of messages posted by users. Data must be saved in a database.
+# Bootcamp2019a Project: Create a personal express app with user LOGIN.
 
-![alt tag](/public/login.png)
-![alt tag](/public/loginProfile.png)
+![alt tag](/public/img/login.png)
+![alt tag](/public/img/loginProfile.png)
 
 ### lessons learned:
 ```
